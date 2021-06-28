@@ -22,10 +22,10 @@ function getData(){
         //3個時段
         apiTime = response.data.records.location[0].weatherElement[3].time;
         let time = document.querySelectorAll('.time');
-        for(let i = 0;i < time.length; i++){
-            for(let j = 0;j < apiTime.length; j++){
-                time[i].textContent = apiTime[j].startTime.slice(5) + " ~ " + apiTime[j].endTime.slice(5)
-            }
+        let timeArr = [];
+        for(let i = 0;i < apiTime.length; i++){
+            timeArr.push(apiTime[i].startTime.slice(5) + " ~ " + apiTime[i].endTime.slice(5))
+            time[i].textContent = timeArr[i]
         }
     })
     .catch( error => {
